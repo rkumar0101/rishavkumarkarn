@@ -3,50 +3,43 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <title>Rishav Kumar | Coming Soon</title>
-  <meta
-    name="description"
-    content="Rishav Kumar's personal website is coming soon. Explore his writing, portfolio, projects, and professional work soon."
-  />
+  <meta name="description" content="Rishav Kumar's personal website is coming soon." />
 
   <style>
     :root {
-      --bg: #050816;
-      --card: rgba(255, 255, 255, 0.08);
-      --card-border: rgba(255, 255, 255, 0.15);
-      --text: #ffffff;
-      --muted: #aeb7d0;
-      --primary: #7c3aed;
-      --secondary: #06b6d4;
-      --accent: #f97316;
-      --success: #22c55e;
+      --bg: #080a12;
+      --card: rgba(255, 255, 255, 0.075);
+      --border: rgba(255, 255, 255, 0.13);
+      --text: #f8fafc;
+      --soft: #a6adbb;
+      --muted: #717b8e;
+      --line: rgba(255, 255, 255, 0.08);
+      --accent: #7dd3fc;
+      --accent-2: #c084fc;
+      --accent-3: #fbbf24;
     }
 
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
       min-height: 100vh;
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      background:
-        radial-gradient(circle at 20% 20%, rgba(124, 58, 237, 0.35), transparent 32%),
-        radial-gradient(circle at 80% 10%, rgba(6, 182, 212, 0.28), transparent 32%),
-        radial-gradient(circle at 50% 90%, rgba(249, 115, 22, 0.18), transparent 38%),
-        var(--bg);
       color: var(--text);
+      background:
+        radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.16), transparent 28%),
+        radial-gradient(circle at 80% 20%, rgba(192, 132, 252, 0.16), transparent 30%),
+        radial-gradient(circle at 50% 90%, rgba(251, 191, 36, 0.09), transparent 30%),
+        var(--bg);
       display: flex;
       align-items: center;
       justify-content: center;
-      overflow-x: hidden;
       padding: 28px;
+      overflow-x: hidden;
     }
 
     body::before {
@@ -54,462 +47,379 @@
       position: fixed;
       inset: 0;
       background-image:
-        linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
-      background-size: 42px 42px;
-      mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.9), transparent);
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 56px 56px;
+      mask-image: linear-gradient(to bottom, black, transparent 80%);
       pointer-events: none;
     }
 
-    .cursor-glow {
+    .glow {
       position: fixed;
-      width: 380px;
-      height: 380px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(124, 58, 237, 0.22), transparent 65%);
-      pointer-events: none;
-      transform: translate(-50%, -50%);
-      z-index: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .orb {
-      position: fixed;
+      width: 360px;
+      height: 360px;
       border-radius: 999px;
-      filter: blur(2px);
-      opacity: 0.8;
+      background: radial-gradient(circle, rgba(125, 211, 252, 0.14), transparent 65%);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
       z-index: 0;
-      animation: float 9s ease-in-out infinite;
     }
 
-    .orb.one {
-      width: 90px;
-      height: 90px;
-      left: 8%;
-      top: 18%;
-      background: rgba(124, 58, 237, 0.35);
-    }
-
-    .orb.two {
-      width: 120px;
-      height: 120px;
-      right: 8%;
-      bottom: 14%;
-      background: rgba(6, 182, 212, 0.25);
-      animation-delay: 1.2s;
-    }
-
-    .orb.three {
-      width: 70px;
-      height: 70px;
-      right: 18%;
-      top: 16%;
-      background: rgba(249, 115, 22, 0.28);
-      animation-delay: 2s;
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0) translateX(0);
-      }
-      50% {
-        transform: translateY(-24px) translateX(12px);
-      }
-    }
-
-    .shell {
+    .wrap {
       position: relative;
       z-index: 1;
-      width: 100%;
-      max-width: 1120px;
+      width: min(100%, 1080px);
       display: grid;
-      grid-template-columns: 0.9fr 1.1fr;
-      gap: 28px;
-      align-items: stretch;
+      grid-template-columns: 0.85fr 1.15fr;
+      gap: 18px;
+      animation: enter 700ms ease both;
     }
 
-    .profile-card,
-    .content-card {
-      background: var(--card);
-      border: 1px solid var(--card-border);
-      backdrop-filter: blur(20px);
-      box-shadow: 0 28px 90px rgba(0, 0, 0, 0.3);
-      border-radius: 34px;
-      overflow: hidden;
-    }
-
-    .profile-card {
-      padding: 32px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      min-height: 620px;
-      animation: slideUp 0.9s ease both;
-    }
-
-    .content-card {
-      padding: 42px;
-      position: relative;
-      animation: slideUp 0.9s ease both;
-      animation-delay: 0.12s;
-    }
-
-    @keyframes slideUp {
+    @keyframes enter {
       from {
         opacity: 0;
-        transform: translateY(24px);
+        transform: translateY(18px) scale(0.98);
       }
       to {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
       }
+    }
+
+    .panel {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 32px;
+      backdrop-filter: blur(22px);
+      box-shadow: 0 30px 90px rgba(0, 0, 0, 0.32);
+    }
+
+    .left {
+      padding: 30px;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      overflow: hidden;
+    }
+
+    .right {
+      padding: 44px;
+      min-height: 600px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .right::after {
+      content: "";
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      right: -90px;
+      top: -90px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.25), rgba(192, 132, 252, 0.16));
+      filter: blur(4px);
+      opacity: 0.8;
     }
 
     .status {
+      width: fit-content;
       display: inline-flex;
       align-items: center;
-      width: fit-content;
       gap: 10px;
-      padding: 10px 14px;
+      padding: 9px 13px;
       border-radius: 999px;
-      background: rgba(34, 197, 94, 0.12);
-      border: 1px solid rgba(34, 197, 94, 0.25);
-      color: #bbf7d0;
-      font-size: 14px;
-      font-weight: 650;
+      color: #dff7ff;
+      background: rgba(125, 211, 252, 0.09);
+      border: 1px solid rgba(125, 211, 252, 0.2);
+      font-size: 13px;
+      font-weight: 700;
     }
 
-    .pulse {
-      width: 9px;
-      height: 9px;
+    .dot {
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
-      background: var(--success);
+      background: #22c55e;
       box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.65);
-      animation: pulse 1.8s infinite;
+      animation: pulse 1.7s infinite;
     }
 
     @keyframes pulse {
-      0% {
-        box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.65);
-      }
       70% {
-        box-shadow: 0 0 0 12px rgba(34, 197, 94, 0);
+        box-shadow: 0 0 0 11px rgba(34, 197, 94, 0);
       }
       100% {
         box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
       }
     }
 
-    .profile-image-wrap {
-      position: relative;
-      width: min(280px, 80%);
+    .photo-box {
+      width: min(290px, 82%);
       aspect-ratio: 1;
-      margin: 46px auto 32px;
-      border-radius: 38px;
+      margin: 46px auto 34px;
+      border-radius: 34px;
       padding: 6px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-      animation: softRotate 7s ease-in-out infinite;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+      position: relative;
+      animation: float 6s ease-in-out infinite;
     }
 
-    @keyframes softRotate {
+    @keyframes float {
       0%, 100% {
-        transform: rotate(-2deg) scale(1);
+        transform: translateY(0) rotate(-1deg);
       }
       50% {
-        transform: rotate(2deg) scale(1.02);
+        transform: translateY(-10px) rotate(1deg);
       }
     }
 
-    .profile-image-wrap::after {
+    .photo-box::before {
       content: "";
       position: absolute;
-      inset: -18px;
-      background: linear-gradient(135deg, var(--primary), var(--secondary), var(--accent));
-      filter: blur(38px);
-      opacity: 0.38;
+      inset: -22px;
+      border-radius: 42px;
+      background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--accent-3));
+      filter: blur(36px);
+      opacity: 0.24;
       z-index: -1;
-      border-radius: 48px;
     }
 
-    .profile-img {
+    .photo-box img {
       width: 100%;
       height: 100%;
       object-fit: cover;
-      border-radius: 32px;
       display: block;
-      border: 4px solid rgba(255, 255, 255, 0.85);
+      border-radius: 28px;
+      border: 4px solid rgba(255, 255, 255, 0.82);
+      background: #111827;
     }
 
-    .mini-title {
+    .fallback-avatar {
+      width: 100%;
+      height: 100%;
+      border-radius: 28px;
+      border: 4px solid rgba(255, 255, 255, 0.82);
+      display: none;
+      place-items: center;
+      background: linear-gradient(135deg, #111827, #1f2937);
+      font-size: 70px;
+      font-weight: 900;
+      letter-spacing: -4px;
+      color: #ffffff;
+    }
+
+    .label {
       color: var(--muted);
-      font-size: 14px;
-      margin-bottom: 8px;
-      letter-spacing: 0.08em;
+      font-size: 13px;
+      letter-spacing: 0.16em;
       text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
     .name {
-      font-size: clamp(28px, 4vw, 42px);
-      line-height: 1.05;
-      letter-spacing: -1.4px;
+      font-size: clamp(32px, 4vw, 46px);
+      line-height: 1;
+      letter-spacing: -1.5px;
       margin-bottom: 14px;
     }
 
     .role {
-      color: var(--muted);
-      font-size: 16px;
+      color: var(--soft);
       line-height: 1.7;
-      max-width: 420px;
+      font-size: 16px;
+      max-width: 360px;
     }
 
-    .profile-bottom {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
-      margin-top: 32px;
-    }
-
-    .small-stat {
-      padding: 16px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.07);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-    }
-
-    .small-stat strong {
-      display: block;
-      font-size: 22px;
-      margin-bottom: 4px;
-    }
-
-    .small-stat span {
-      color: var(--muted);
-      font-size: 13px;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
+    .chips {
+      display: flex;
+      flex-wrap: wrap;
       gap: 10px;
-      color: #dbeafe;
-      background: rgba(37, 99, 235, 0.14);
-      border: 1px solid rgba(147, 197, 253, 0.18);
-      padding: 10px 14px;
+      margin-top: 28px;
+    }
+
+    .chip {
+      padding: 9px 12px;
       border-radius: 999px;
+      border: 1px solid var(--border);
+      color: var(--soft);
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.055);
+    }
+
+    .kicker {
+      position: relative;
+      z-index: 1;
+      color: #d8ecff;
       font-size: 14px;
-      font-weight: 650;
-      margin-bottom: 24px;
-    }
-
-    .spark {
-      width: 18px;
-      height: 18px;
-      display: inline-block;
-      border-radius: 50%;
-      background: conic-gradient(from 180deg, var(--secondary), var(--primary), var(--accent), var(--secondary));
-      animation: spin 3s linear infinite;
-    }
-
-    @keyframes spin {
-      to {
-        transform: rotate(360deg);
-      }
+      font-weight: 750;
+      margin-bottom: 18px;
     }
 
     h1 {
-      font-size: clamp(46px, 8vw, 92px);
-      line-height: 0.94;
+      position: relative;
+      z-index: 1;
+      max-width: 730px;
+      font-size: clamp(52px, 8vw, 94px);
+      line-height: 0.92;
       letter-spacing: -4px;
-      margin-bottom: 22px;
+      margin-bottom: 24px;
     }
 
-    .gradient-text {
-      background: linear-gradient(135deg, #ffffff, #bfdbfe 35%, #c4b5fd 65%, #fed7aa);
+    .shine {
+      background: linear-gradient(135deg, #ffffff, #bae6fd 40%, #ddd6fe 75%, #fde68a);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
     }
 
-    .intro {
-      color: var(--muted);
-      font-size: clamp(17px, 2vw, 20px);
+    .subcopy {
+      position: relative;
+      z-index: 1;
+      color: var(--soft);
+      font-size: 18px;
       line-height: 1.75;
-      max-width: 680px;
+      max-width: 610px;
       margin-bottom: 34px;
     }
 
     .countdown {
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 14px;
-      margin: 30px 0 24px;
+      gap: 12px;
+      margin-bottom: 24px;
     }
 
-    .time-box {
-      position: relative;
-      padding: 22px 14px;
-      border-radius: 24px;
-      background: rgba(255, 255, 255, 0.075);
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      overflow: hidden;
-      transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+    .time {
+      padding: 20px 12px;
+      border-radius: 22px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: transform 220ms ease, background 220ms ease, border-color 220ms ease;
     }
 
-    .time-box:hover {
-      transform: translateY(-6px);
-      border-color: rgba(125, 211, 252, 0.4);
-      background: rgba(255, 255, 255, 0.11);
+    .time:hover {
+      transform: translateY(-5px);
+      background: rgba(255, 255, 255, 0.09);
+      border-color: rgba(125, 211, 252, 0.35);
     }
 
-    .time-box::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top, rgba(255, 255, 255, 0.18), transparent 58%);
-      opacity: 0;
-      transition: opacity 0.25s ease;
-    }
-
-    .time-box:hover::before {
-      opacity: 1;
-    }
-
-    .time-box strong {
-      position: relative;
+    .time strong {
       display: block;
-      font-size: clamp(32px, 5vw, 48px);
+      font-size: clamp(30px, 4.5vw, 48px);
       line-height: 1;
-      margin-bottom: 8px;
       letter-spacing: -1px;
     }
 
-    .time-box span {
-      position: relative;
+    .time span {
+      display: block;
+      margin-top: 9px;
       color: var(--muted);
-      font-size: 13px;
+      font-size: 12px;
+      font-weight: 800;
       text-transform: uppercase;
       letter-spacing: 0.12em;
-      font-weight: 700;
     }
 
-    .launch-row {
+    .launch-meta {
+      position: relative;
+      z-index: 1;
       display: flex;
       justify-content: space-between;
-      gap: 18px;
+      gap: 20px;
       color: var(--muted);
       font-size: 14px;
       margin-bottom: 12px;
     }
 
-    .progress-track {
-      width: 100%;
-      height: 10px;
+    .track {
+      position: relative;
+      z-index: 1;
+      height: 9px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.09);
+      background: rgba(255, 255, 255, 0.08);
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
-      margin-bottom: 30px;
     }
 
-    .progress-fill {
+    .fill {
       width: 0%;
       height: 100%;
       border-radius: inherit;
-      background: linear-gradient(90deg, var(--secondary), var(--primary), var(--accent));
-      transition: width 0.8s ease;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), var(--accent-3));
+      transition: width 700ms ease;
     }
 
-    .actions {
+    .links {
+      position: relative;
+      z-index: 1;
       display: flex;
       flex-wrap: wrap;
-      gap: 14px;
-      margin-top: 26px;
+      gap: 12px;
+      margin-top: 30px;
     }
 
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
+    .link {
       text-decoration: none;
       color: #ffffff;
-      padding: 14px 18px;
+      padding: 13px 17px;
       border-radius: 999px;
-      font-size: 15px;
-      font-weight: 750;
-      transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
-    }
-
-    .btn-primary {
-      background: linear-gradient(135deg, var(--primary), var(--secondary));
-      box-shadow: 0 18px 34px rgba(124, 58, 237, 0.24);
-    }
-
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.14);
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 18px 34px rgba(6, 182, 212, 0.18);
-    }
-
-    .building-list {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-      margin-top: 34px;
-    }
-
-    .building-item {
-      padding: 16px;
-      border-radius: 20px;
-      color: var(--muted);
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(255, 255, 255, 0.1);
       font-size: 14px;
-      line-height: 1.5;
+      font-weight: 800;
+      background: rgba(255, 255, 255, 0.075);
+      border: 1px solid rgba(255, 255, 255, 0.13);
+      transition: transform 220ms ease, border-color 220ms ease, background 220ms ease;
     }
 
-    .building-item strong {
-      display: block;
-      color: #ffffff;
-      margin-bottom: 5px;
-      font-size: 15px;
+    .link:hover {
+      transform: translateY(-4px);
+      border-color: rgba(125, 211, 252, 0.38);
+      background: rgba(125, 211, 252, 0.11);
+    }
+
+    .link.primary {
+      background: linear-gradient(135deg, rgba(125, 211, 252, 0.28), rgba(192, 132, 252, 0.22));
+      border-color: rgba(125, 211, 252, 0.32);
     }
 
     .footer {
-      margin-top: 32px;
-      color: rgba(255, 255, 255, 0.52);
+      color: rgba(255, 255, 255, 0.45);
       font-size: 13px;
+      margin-top: 30px;
     }
 
-    @media (max-width: 920px) {
+    @media (max-width: 900px) {
       body {
         align-items: flex-start;
       }
 
-      .shell {
+      .wrap {
         grid-template-columns: 1fr;
       }
 
-      .profile-card {
+      .left,
+      .right {
         min-height: auto;
       }
 
-      .profile-image-wrap {
-        width: min(220px, 80%);
+      .photo-box {
+        width: min(230px, 80%);
       }
     }
 
-    @media (max-width: 620px) {
+    @media (max-width: 560px) {
       body {
         padding: 16px;
       }
 
-      .content-card,
-      .profile-card {
+      .left,
+      .right {
         padding: 24px;
         border-radius: 26px;
       }
@@ -522,166 +432,98 @@
         grid-template-columns: repeat(2, 1fr);
       }
 
-      .building-list {
-        grid-template-columns: 1fr;
-      }
-
-      .profile-bottom {
-        grid-template-columns: 1fr;
-      }
-
-      .actions a {
-        width: 100%;
-      }
-
-      .launch-row {
+      .launch-meta {
         flex-direction: column;
         gap: 6px;
+      }
+
+      .link {
+        width: 100%;
+        text-align: center;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="cursor-glow" id="cursorGlow"></div>
-  <div class="orb one"></div>
-  <div class="orb two"></div>
-  <div class="orb three"></div>
+  <div class="glow" id="glow"></div>
 
-  <main class="shell">
-    <section class="profile-card">
+  <main class="wrap">
+    <section class="panel left">
       <div>
-        <div class="status">
-          <span class="pulse"></span>
-          Website build in progress
+        <div class="status"><span class="dot"></span> Launch in progress</div>
+
+        <div class="photo-box">
+          <img id="profileImage" src="assets/profile.jpg" alt="Rishav Kumar profile picture" />
+          <div id="fallbackAvatar" class="fallback-avatar">RK</div>
         </div>
 
-        <div class="profile-image-wrap">
-          <img src="profile.jpg" alt="Rishav Kumar profile picture" class="profile-img" />
-        </div>
-
-        <p class="mini-title">Personal Website</p>
+        <p class="label">Personal Website</p>
         <h2 class="name">Rishav Kumar</h2>
+        <p class="role">B2B SaaS content writer. Building a sharper home for my work, projects, and portfolio.</p>
 
-        <p class="role">
-          B2B SaaS content writer building a personal space for portfolio work,
-          projects, case studies, and writing samples.
-        </p>
+        <div class="chips">
+          <span class="chip">SEO Content</span>
+          <span class="chip">B2B SaaS</span>
+          <span class="chip">Portfolio</span>
+        </div>
       </div>
 
-      <!-- <div class="profile-bottom">
-        <div class="small-stat">
-          <strong>SEO</strong>
-          <span>Content strategy</span>
-        </div>
-        <div class="small-stat">
-          <strong>B2B</strong>
-          <span>SaaS writing</span>
-        </div>
-      </div> -->
+      <p class="footer">© 2026 Rishav Kumar</p>
     </section>
 
-    <section class="content-card">
-      <div class="eyebrow">
-        <span class="spark"></span>
-        Launching on 21 May 2026, 12:00 PM IST
-      </div>
+    <section class="panel right">
+      <p class="kicker">Going live on 21 May 2026, 12:00 PM IST</p>
 
       <h1>
-        Something sharp is
-        <span class="gradient-text">coming soon.</span>
+        Portfolio<br />
+        <span class="shine">coming soon.</span>
       </h1>
 
-      <!-- <p class="intro">
-        I am working on a cleaner and stronger personal website that brings together my writing,
-        portfolio, author pages, projects, and professional journey in one place.
-      </p> -->
+      <p class="subcopy">A clean personal website with selected work, author pages, projects, and ways to connect.</p>
 
-      <div class="countdown" aria-label="Countdown to website launch">
-        <div class="time-box">
-          <strong id="days">00</strong>
-          <span>Days</span>
-        </div>
-
-        <div class="time-box">
-          <strong id="hours">00</strong>
-          <span>Hours</span>
-        </div>
-
-        <div class="time-box">
-          <strong id="minutes">00</strong>
-          <span>Minutes</span>
-        </div>
-
-        <div class="time-box">
-          <strong id="seconds">00</strong>
-          <span>Seconds</span>
-        </div>
+      <div class="countdown" aria-label="Countdown to launch">
+        <div class="time"><strong id="days">00</strong><span>Days</span></div>
+        <div class="time"><strong id="hours">00</strong><span>Hours</span></div>
+        <div class="time"><strong id="minutes">00</strong><span>Minutes</span></div>
+        <div class="time"><strong id="seconds">00</strong><span>Seconds</span></div>
       </div>
 
-      <div class="launch-row">
-        <span id="countdownMessage">Preparing the launch experience...</span>
+      <div class="launch-meta">
+        <span id="message">Final build in progress.</span>
         <span id="progressText">0% ready</span>
       </div>
 
-      <div class="progress-track">
-        <div class="progress-fill" id="progressFill"></div>
+      <div class="track">
+        <div class="fill" id="fill"></div>
       </div>
 
-      <div class="actions">
-        <a class="btn btn-primary" href="mailto:rishavkumarkarn3@gmail.com">
-          Contact Me
-        </a>
-
-        <a class="btn btn-secondary" href="https://www.linkedin.com/in/rishavkumarkarn/" target="_blank" rel="noopener">
-          LinkedIn
-        </a>
-
-        <!-- <a class="btn btn-secondary" href="https://YOUR-PORTFOLIO-LINK.com" target="_blank" rel="noopener">
-          Portfolio
-        </a> -->
+      <div class="links">
+        <a class="link primary" href="mailto:rishavkumarkarn7@gmail.com">Email Me</a>
+        <a class="link" href="https://www.linkedin.com/in/YOUR-LINKEDIN/" target="_blank" rel="noopener">LinkedIn</a>
+        <a class="link" href="https://YOUR-PORTFOLIO-LINK.com" target="_blank" rel="noopener">Portfolio</a>
       </div>
-
-      <div class="building-list">
-        <div class="building-item">
-          <strong>Writing Portfolio</strong>
-          Selected blogs, author pages, and long-form content.
-        </div>
-
-        <div class="building-item">
-          <strong>Projects</strong>
-          Website builds, experiments, and work-in-progress ideas.
-        </div>
-
-        <div class="building-item">
-          <strong>Professional Story</strong>
-          Experience, skills, and the work I am building next.
-        </div>
-      </div>
-
-      <p class="footer">
-        © 2026 Rishav Kumar. All rights reserved.
-      </p>
     </section>
   </main>
 
   <script>
     const launchDate = new Date("2026-05-21T12:00:00+05:30").getTime();
+    const startDate = new Date("2026-05-12T00:00:00+05:30").getTime();
+    const totalTime = launchDate - startDate;
 
-    const startDate = new Date("2026-05-11T00:00:00+05:30").getTime();
-    const totalDuration = launchDate - startDate;
-
-    const daysEl = document.getElementById("days");
-    const hoursEl = document.getElementById("hours");
-    const minutesEl = document.getElementById("minutes");
-    const secondsEl = document.getElementById("seconds");
-    const progressFill = document.getElementById("progressFill");
+    const days = document.getElementById("days");
+    const hours = document.getElementById("hours");
+    const minutes = document.getElementById("minutes");
+    const seconds = document.getElementById("seconds");
+    const fill = document.getElementById("fill");
     const progressText = document.getElementById("progressText");
-    const countdownMessage = document.getElementById("countdownMessage");
-    const cursorGlow = document.getElementById("cursorGlow");
+    const message = document.getElementById("message");
+    const glow = document.getElementById("glow");
+    const profileImage = document.getElementById("profileImage");
+    const fallbackAvatar = document.getElementById("fallbackAvatar");
 
-    function pad(number) {
-      return String(number).padStart(2, "0");
+    function pad(value) {
+      return String(value).padStart(2, "0");
     }
 
     function updateCountdown() {
@@ -689,58 +531,49 @@
       const distance = launchDate - now;
 
       if (distance <= 0) {
-        daysEl.textContent = "00";
-        hoursEl.textContent = "00";
-        minutesEl.textContent = "00";
-        secondsEl.textContent = "00";
-        progressFill.style.width = "100%";
+        days.textContent = "00";
+        hours.textContent = "00";
+        minutes.textContent = "00";
+        seconds.textContent = "00";
+        fill.style.width = "100%";
         progressText.textContent = "100% ready";
-        countdownMessage.textContent = "The website should be live now.";
+        message.textContent = "The site should be live now.";
         return;
       }
 
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((distance / (1000 * 60)) % 60);
-      const seconds = Math.floor((distance / 1000) % 60);
+      const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+      const h = Math.floor((distance / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((distance / (1000 * 60)) % 60);
+      const s = Math.floor((distance / 1000) % 60);
 
-      daysEl.textContent = pad(days);
-      hoursEl.textContent = pad(hours);
-      minutesEl.textContent = pad(minutes);
-      secondsEl.textContent = pad(seconds);
+      days.textContent = pad(d);
+      hours.textContent = pad(h);
+      minutes.textContent = pad(m);
+      seconds.textContent = pad(s);
 
       const elapsed = now - startDate;
-      const progress = Math.min(Math.max((elapsed / totalDuration) * 100, 0), 100);
-
-      progressFill.style.width = `${progress.toFixed(1)}%`;
+      const progress = Math.min(Math.max((elapsed / totalTime) * 100, 0), 100);
+      fill.style.width = `${progress.toFixed(1)}%`;
       progressText.textContent = `${Math.floor(progress)}% ready`;
 
-      if (days > 5) {
-        countdownMessage.textContent = "The foundation is being polished.";
-      } else if (days > 2) {
-        countdownMessage.textContent = "Final sections are coming together.";
-      } else if (days > 0) {
-        countdownMessage.textContent = "Almost there. Final checks are in progress.";
-      } else {
-        countdownMessage.textContent = "Launch day is here.";
-      }
+      if (d > 5) message.textContent = "Structure and visuals are being polished.";
+      else if (d > 2) message.textContent = "Core sections are almost ready.";
+      else if (d > 0) message.textContent = "Final checks are in progress.";
+      else message.textContent = "Launch day is here.";
     }
 
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
+    profileImage.addEventListener("error", () => {
+      profileImage.style.display = "none";
+      fallbackAvatar.style.display = "grid";
+    });
 
     window.addEventListener("mousemove", (event) => {
-      cursorGlow.style.left = `${event.clientX}px`;
-      cursorGlow.style.top = `${event.clientY}px`;
+      glow.style.left = `${event.clientX}px`;
+      glow.style.top = `${event.clientY}px`;
     });
 
-    window.addEventListener("mouseleave", () => {
-      cursorGlow.style.opacity = "0";
-    });
-
-    window.addEventListener("mouseenter", () => {
-      cursorGlow.style.opacity = "1";
-    });
+    updateCountdown();
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
